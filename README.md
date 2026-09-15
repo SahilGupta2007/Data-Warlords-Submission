@@ -53,9 +53,6 @@ The AI Strategist requires your own Groq API key.
 ```text
 GROQ_API_KEY=your-groq-api-key
 ```
-
-You can copy [`.env.example`](.env.example) as a starting point. Keep `.env` private and never commit it; the file is already excluded by `.gitignore`.
-
 The dashboard remains usable without a key, but live natural-language data analysis will be disabled.
 
 ### 3. Start the application
