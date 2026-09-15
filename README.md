@@ -58,7 +58,7 @@ The dashboard remains usable without a key, but live natural-language data analy
 ### 3. Start the application
 
 ```bash
-python app.py
+python run_all.py
 ```
 
 The launcher prints the dashboard URL, normally `http://localhost:8501`. On the first run, it cleans the source data, builds the DuckDB warehouse, detects fraud rings, and launches Streamlit. Later runs reuse the generated outputs to avoid unnecessary rebuilds and database-lock conflicts.
@@ -67,10 +67,7 @@ Additional launcher options:
 
 ```bash
 # Rebuild all data outputs, then launch the dashboard
-python app.py --rebuild
-
-# Rebuild all data outputs without launching the dashboard
-python app.py --pipeline-only
+python run_all.py --rebuild
 ```
 
 Stop any running dashboard before using a rebuild option because DuckDB allows only one process to write to the warehouse file.
