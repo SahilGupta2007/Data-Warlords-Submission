@@ -1,0 +1,112 @@
+Track 1: FinTech & BFSI - UPI Fraud Ring & Merchant Analytics
+
+This bundle contains synthetic FinTech and digital payments data designed for the TransOrg AgentIQ Datathon.
+
+Files included:
+1. track1_upi_transactions.csv
+   - Core UPI transaction logs
+   - Messy transaction amounts, timestamps, UTR numbers, transaction statuses, merchant/customer IDs, duplicates
+
+2. track1_kyc_records.csv
+   - Customer KYC master data
+   - Messy PAN, Aadhaar, income, city, state, signup dates, KYC status, risk segment, user ID formats
+
+3. track1_merchants_master.csv
+   - Merchant master data
+   - Messy MCC codes, merchant categories, business types, onboarding dates, merchant status, settlement account details, average ticket size
+
+4. track1_chargebacks.json
+   - Customer disputes and chargeback complaints
+   - Messy transaction IDs, user IDs, merchant IDs, disputed amounts, reason codes, complaint text, resolution status, severity, timestamps
+
+5. track1_dataset_notes.txt
+   - This file
+
+Expected join keys:
+- UPI transactions + KYC records: user_id
+- UPI transactions + Merchant master: merchant_id
+- Chargebacks + UPI transactions: txn_id
+- Chargebacks + KYC records: user_id
+- Chargebacks + Merchant master: merchant_id
+
+Expected student tasks:
+1. Standardize user_id formats such as USR12345, usr12345, USR-12345, USR 12345, usr_12345, 12345.
+2. Standardize merchant_id formats such as MCH1234, mch1234, MCH-1234, MCH 1234, 1234.
+3. Clean and normalize transaction amounts containing currency symbols, commas, blanks, invalid strings, and negative values.
+4. Clean and parse mixed timestamp formats across transactions, KYC records, merchant onboarding dates, and chargeback logs.
+5. Normalize transaction status values such as SUCCESS, Success, TXN_SUCCESS, COMPLETED, FAILED, Fail, Declined, PENDING, PROCESSING.
+6. Clean UTR values by handling missing values, spaces, hyphens, and invalid formats.
+7. Clean KYC fields such as PAN, Aadhaar, monthly income, city, state, occupation, and KYC status.
+8. Normalize MCC codes and merchant category values.
+9. Parse JSON chargeback data and standardize disputed amounts, reason codes, severity levels, and resolution statuses.
+10. Handle missing values, duplicates, invalid foreign keys, impossible timestamps, and inconsistent text values.
+11. Create an analytics-ready data model linking transactions, customers, merchants, and disputes.
+12. Build a fraud, dispute, and merchant risk analytics dashboard.
+13. Optionally build a graph-first AI agent.
+
+Expected business metrics:
+- Total transaction count
+- Total transaction amount
+- Average transaction value
+- Failed transaction rate
+- Pending transaction rate
+- Chargeback count
+- Chargeback amount
+- Chargeback-to-transaction ratio
+- Dispute rate by merchant category
+- High-risk merchants
+- High-risk users
+- KYC completion rate
+- KYC rejection rate
+- Average dispute reporting delay
+- Merchant category performance
+- Suspicious transaction clusters
+
+Example dashboard questions:
+- Daily transaction volume and transaction value trend
+- Failed transaction trend by day/hour
+- Top merchant categories by transaction amount
+- Top merchants by chargeback count
+- Top merchants by disputed amount
+- Chargeback-to-transaction ratio by merchant category
+- Chargeback reason distribution
+- Dispute severity distribution
+- KYC status distribution
+- High-risk users with repeated disputes
+- High-risk merchants with repeated disputes
+- Customers with high-value chargebacks
+- Merchants with sudden transaction spikes
+- Disputes reported after long delays
+- Transactions missing UTR or having invalid UTR formats
+
+Example agent queries:
+- Show daily transaction volume trend.
+- Show total transaction amount by merchant category.
+- Compare successful vs failed transactions by day.
+- Which merchant has the highest chargeback count?
+- Which merchant category has the highest disputed amount?
+- Show chargeback reason distribution.
+- Show top 10 users by disputed amount.
+- Show average transaction value trend over time.
+- Which KYC status has the highest transaction amount?
+- Compare chargebacks by severity level.
+- Show disputes reported after 7 days.
+- Which merchant has the highest chargeback-to-transaction ratio?
+
+Example insights students may discover:
+- Certain merchant categories may have disproportionately high chargebacks.
+- Some users may appear repeatedly in disputes.
+- Some merchants may have sudden transaction spikes followed by disputes.
+- Missing UTRs may correlate with failed or disputed transactions.
+- Unverified or rejected KYC users may show higher fraud/dispute risk.
+- Delayed chargeback reporting may indicate account takeover or late fraud detection.
+- Duplicate transactions may inflate revenue or dispute metrics if not removed.
+
+Important evaluation notes:
+- Students must not simply delete all messy rows. They should show a logical cleaning strategy.
+- Dropping a large percentage of data without justification should be penalized.
+- Currency cleaning, date parsing, status normalization, and join correctness are critical.
+- Chargeback data must be linked correctly to transactions before calculating dispute ratios.
+- Dashboard insights should be business-focused, not just chart-heavy.
+
+All data is synthetic and generated only for educational/datathon purposes.
