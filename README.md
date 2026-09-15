@@ -41,6 +41,14 @@ The command executes the cleaning pipeline, prints the raw-versus-clean row-coun
 The 85.08% aggregate retention rate reflects removal of identified duplicate entity records. The pipeline preserves 100% of unique records and does not drop rows because of malformed currency, timestamps, identifiers, or missing values.
 
 ---
+## How to Get Your Own API Key
+The Dashboard will work without the API key, but to use AI Strategist, you will need to enter your own API key. Here, we suggest using a Groq API Key, as it is easy to create.
+Steps to Create Groq API Key:
+1. Go to [GroqCloud Console](https://console.groq.com/keys) and create a free account or log in.
+2. Then click on Create API key, generate and copy it.
+After this, just set the `GROQ_API_KEY` in the environment i.e., the '.env' file.
+That's it!
+---
 
 ## 📌 Table of Contents
 1. [Evaluator Quick Verification](#-evaluator-quick-verification)
