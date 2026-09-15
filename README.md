@@ -48,8 +48,7 @@ The AI Strategist requires your own Groq API key.
 1. Open the [GroqCloud API Keys page](https://console.groq.com/keys).
 2. Create a free GroqCloud account or sign in.
 3. Select **Create API Key** and copy the generated key.
-4. Create a file named `.env` in the project root.
-5. Add your key to `.env`:
+4. Add your key to `.env`:
 
 ```text
 GROQ_API_KEY=your-groq-api-key
